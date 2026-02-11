@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { signUp } from "../services/backEndServices.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
 
@@ -15,7 +15,7 @@ export const Signup = () => {
     const [showPass, setShowPass] = useState(false);
     const [showConfirmPass, setShowConfirmPass] = useState(false);
     const [error, setError] = useState("");
-     const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setUser({
@@ -36,7 +36,7 @@ export const Signup = () => {
             setError("Password must be at least 6 characters");
             return;
         }
-        if (user.password !== user.confirmPassword){
+        if (user.password !== user.confirmPassword) {
             setError("Passwords do not match");
             return;
         }
@@ -44,11 +44,11 @@ export const Signup = () => {
         setLoading(true);
         const response = await signUp(user)
         console.log("esta es mi response ---> ", response);
-        
-        if (response.error){
+
+        if (response.error) {
             setError(response.error)
             setLoading(false)
-            return 
+            return
         }
         navigate("/login")
     }
@@ -78,10 +78,10 @@ export const Signup = () => {
                                 </p>
                             </div>
 
-                            { error && (
-                                 <div className="alert alert-danger py-2" role="alert">
+                            {error && (
+                                <div className="alert alert-danger py-2" role="alert">
                                     {error}
-                                 </div>
+                                </div>
                             )}
                             <form onSubmit={handleSubmit}>
 
@@ -166,7 +166,7 @@ export const Signup = () => {
                                     className="btn btn-primary w-100 py-2 fw-semibold"
                                     disabled={loading}
                                 >
-                                    { loading ? (
+                                    {loading ? (
                                         <span className="d-inline-flex align-items-center gap-2">
                                             <span
                                                 className="spinner-border spinner-border-sm"
@@ -184,7 +184,7 @@ export const Signup = () => {
                                     <Link to="/login" className="link-secondary text-decoration-none">
                                         Already have an account?
                                     </Link>
-                                    <Link to="/"className="link-secondary text-decoration-none">
+                                    <Link to="/" className="link-secondary text-decoration-none">
                                         Back to home
                                     </Link>
                                 </div>
