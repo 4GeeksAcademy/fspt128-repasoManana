@@ -1,11 +1,10 @@
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import React, { useState, useEffect } from "react"
 import { signUp } from "../services/backEndServices.js";
 import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
 
-    const { store, dispatch } = useGlobalReducer()
+
     const navigate = useNavigate()
 
     const [user, setUser] = useState({
@@ -51,7 +50,7 @@ export const Signup = () => {
             setLoading(false)
             return 
         }
-        navigate("/")
+        navigate("/login")
     }
 
     useEffect(() => {
@@ -182,12 +181,12 @@ export const Signup = () => {
                                 </button>
 
                                 <div className="d-flex justify-content-between mt-3 small">
-                                    <a href="#" className="link-secondary text-decoration-none">
+                                    <Link to="/login" className="link-secondary text-decoration-none">
                                         Already have an account?
-                                    </a>
-                                    <a href="#" className="link-secondary text-decoration-none">
+                                    </Link>
+                                    <Link to="/"className="link-secondary text-decoration-none">
                                         Back to home
-                                    </a>
+                                    </Link>
                                 </div>
 
                             </form>
